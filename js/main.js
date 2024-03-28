@@ -23,7 +23,7 @@ function successHandler(data) {}
 
 function errorHandler(error) {
     console.log(error);
-    const errordiv = document.createElement("div");
-    errordiv.classList.add("error");
-    errordiv.innerText = "data not available";
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("error");
+    errorDiv.innerText = "data not available";
 }
