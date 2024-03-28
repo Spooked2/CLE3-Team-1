@@ -49,6 +49,7 @@ function getData(url, success) {
  * @param {String} restaurants.restaurant.name - Restaurant name
  * @param {String} restaurants.restaurant.location - Restaurant location
  * @param {String} restaurants.restaurant.website - Link to the restaurant's own website
+ * @param {String} restaurants.restaurant.pricing - Price range of the restaurant
  */
 function fetchAllHandler(restaurants) {
 
@@ -63,7 +64,7 @@ function fetchAllHandler(restaurants) {
         //Create image element
         let image = document.createElement('img');
 
-        //Create div for name, location and website
+        //Create div for name, location, pricing and website
         let infoDiv = document.createElement('div');
 
         //Create a h2 for name
@@ -71,6 +72,9 @@ function fetchAllHandler(restaurants) {
 
         //Create a paragraph for the location
         let location = document.createElement('p');
+
+        //Create an image element for the pricing
+        let pricing = document.createElement('img');
 
         //Create an Anchor for the website link
         let website = document.createElement('a');
@@ -87,6 +91,7 @@ function fetchAllHandler(restaurants) {
         //Fill the info div with correct elements
         infoDiv.appendChild(name);
         infoDiv.appendChild(location);
+        infoDiv.appendChild(pricing)
         infoDiv.appendChild(website);
 
         //Fill the rating div with correct elements
@@ -105,6 +110,7 @@ function fetchAllHandler(restaurants) {
         // image.src = `images/${restaurant.id}.png`;
         image.src = `images/placeholder.png`;
         ratingImage.src = `images/rating/${rating}.png`;
+        pricing.src = `images/pricing/${restaurant.pricing}.png`;
 
         //Fill created elements with the restaurant info
         name.innerText = restaurant.name;
