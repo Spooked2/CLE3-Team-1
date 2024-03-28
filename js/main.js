@@ -6,17 +6,26 @@ let allRestaurantsInfo;
 let restaurantSmallDetails = {};
 let restaurantBigDetails = {};
 let searchResultsDialog;
+let searchResultsContainer
 
 function init() {
     getData(apiUrl, fetchAllHandler);
 
     //Get the dialog for the search results
-    searchResultsDialog = document.getElementById('search_results');
+    searchResultsDialog = document.getElementById('search_results_dialog');
     //Add a temporary way to open the dialog
     let testSearchDialog = document.getElementById('show_search_results');
     testSearchDialog.addEventListener('click', () => {
         searchResultsDialog.show();
     })
+    //Add a temporary way to close the dialog
+    let hideSearchDialog = document.getElementById('hide_search_results');
+    hideSearchDialog.addEventListener('click', () => {
+        searchResultsDialog.close();
+    })
+
+    //Get the container to put the search results in
+    searchResultsContainer = document.getElementById('search_results');
 
 }
 
@@ -106,13 +115,14 @@ function fetchAllHandler(restaurants) {
 
         //Add dataset to article
         article.dataset.name = restaurant.name;
+        article.dataset.size = 'small';
         article.dataset.id = `${restaurant.id}`;
 
         //Add final article to object
         restaurantSmallDetails[restaurant.id] = article;
 
         //Add final article to search results dialog for testing
-        searchResultsDialog.appendChild(article);
+        searchResultsContainer.appendChild(article);
     }
 
 }
