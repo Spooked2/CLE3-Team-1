@@ -78,10 +78,12 @@ function getData(url, success) {
  * @param {String} restaurants.restaurant.pricing - Price range of the restaurant
  */
 function fetchAllHandler(restaurants) {
-  //Loop through all the restaurants and create articles for search results modal
-  for (const restaurant of restaurants) {
-    //Store the restaurant info in variable, so we don't need to fetch the information again
-    allRestaurantsInfo[] = restaurant;
+
+    //Loop through all the restaurants and create articles for search results modal
+    for (const restaurant of restaurants) {
+
+        //Store the restaurant info in variable, so we don't need to fetch the information again
+        allRestaurantsInfo.push(restaurant);
 
     //Create the article element
     let article = document.createElement("article");
@@ -281,10 +283,10 @@ function resultClickHandler(e) {
     id = e.target.parentElement.parentElement.dataset.id;
   }
 
-  //Create a big detail article if one doesn't exist already
-  if (!restaurantBigDetails[id]) {
-    createBigDetailArticle(allRestaurantsInfo[id]);
-  }
+    //Create a big detail article if one doesn't exist already
+    if (!restaurantBigDetails[id]) {
+        createBigDetailArticle(allRestaurantsInfo.find(restaurant => restaurant.id === id));
+    }
 
   //Replace the innerHTML of the big detail article with the correct article
   bigDetailArticle.innerHTML = restaurantBigDetails[id];
@@ -409,32 +411,35 @@ function createBigDetailArticle(restaurant) {
 
 //make array of restaurant objects
 function updateF(e) {
-    //get dataset-name of e
-    let filteredRestaurants = allRestaurantsInfo.filter(validateFilter)
-
-    
+  //get dataset-name of e
+  let name = e.target.dataset.name;
+  console.log(filter);
+  let filteredRestaurants = allRestaurantsInfo.filter(validateFilter);
 }
 
 function validateFilter(restaurant) {
-    let accessible = true;
-    for(){
-        //check for each filter if they are true
-        //  "wc"
-        //  "ground_floor"
-        //  "lift"
-        //  "ramp"
-        //  "door_system"
-        //  "door_width"
-        //  "hall_width"
-        //  "distance_park"
-        //  "distance_ov"
-        //check if restaurant is qualified
+  let accessible = true;
+  for (res of restaurant) {
+    //check for each filter if they are true
+    //  "wc"
+    //  "ground_floor"
+    //  "lift"
+    //  "ramp"
+    //  "door_system"
+    //  "door_width"
+    //  "hall_width"
+    //  "distance_park"
+    //  "distance_ov"
+    //check if restaurant is qualified
 
-        //if not set accessible to false
-    }
-    if (accessible){
-        return restaurant
-    }
+    //if not set accessible to false
+    accessible = false;
+  }
+  if (accessible) {
+    return restaurant;
+  } else {
+    return;
+  }
 }
 //this function got me feeling: https://www.youtube.com/watch?v=kLp_Hh6DKWc
 
