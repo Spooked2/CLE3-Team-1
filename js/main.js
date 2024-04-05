@@ -337,8 +337,8 @@ function createBigDetailArticle(restaurant) {
 
         let text;
         switch (accessibilityFeatures.indexOf(accessibilityFeature)) {
-            case 0: text = 'Is er een invalide WC aanwezig?'; break;
-            case 1: text = 'Op de begaande grond?'; break;
+            case 0: text = 'Is er een invalidetoilet aanwezig?'; break;
+            case 1: text = 'Op de begane grond?'; break;
             case 2: text = 'Is er een lift aanwezig?'; break;
             case 3: text = 'Is er een helling aanwezig?'; break;
             case 4: text = 'Wat voor deur is er?'; break;
