@@ -2,7 +2,7 @@ window.addEventListener("load", init);
 
 //Globals
 const apiUrl = "https://stud.hosted.hr.nl/1087172/quick-database-crud-cle3/";
-let allRestaurantsInfo = {};
+let allRestaurantsInfo = [];
 let restaurantSmallDetails = {};
 let restaurantBigDetails = {};
 let searchResultsDialog;
@@ -73,7 +73,7 @@ function fetchAllHandler(restaurants) {
     for (const restaurant of restaurants) {
 
         //Store the restaurant info in variable, so we don't need to fetch the information again
-        allRestaurantsInfo[restaurant.id] = restaurant;
+        allRestaurantsInfo.push(restaurant);
 
         //Create the article element
         let article = document.createElement('article');
@@ -279,7 +279,7 @@ function resultClickHandler(e) {
 
     //Create a big detail article if one doesn't exist already
     if (!restaurantBigDetails[id]) {
-        createBigDetailArticle(allRestaurantsInfo[id]);
+        createBigDetailArticle(allRestaurantsInfo.find(restaurant => restaurant.id === id));
     }
 
     //Replace the innerHTML of the big detail article with the correct article
