@@ -8,6 +8,98 @@
 </head>
 <body>
 
+
+<h1>Toegankelijk Tafelen</h1>
+
+<div class = "sidebar">
+    <h1>Tafelen</h1>
+    <div class = "flexbox">
+        <form action="/search" method="get">
+            <input type="search" name="q" placeholder="Zoeken...">
+        </form>
+        <button>keuken</button>
+        <button>toegankelijkheid</button>
+        <button>prijs</button>
+    </div>
+</div>
+<div class="whiteNav">
+    <h2>Resultaten: 34</h2>
+</div>
+<div class="results">
+    <div class="resultPanel">
+        <div class="resultDetails">
+
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Gelijkvloers</p>
+                <img src="../CLE3-Team-1/images/rating/medium.png" alt="rood oranje of groen">
+                <p>Lift aanwezig</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/bad.png" alt="rood oranje of groen">
+                <p>Parkeren</p>
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Openbaar vervoer</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Automatische deuren</p>
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Toegankelijkheid toilet</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Brede gangen</p>
+                <img src="../CLE3-Team-1/images/rating/bad.png" alt="rood oranje of groen">
+                <p>Invalide toilet</p>
+            </div>
+            <div class="titleLine">
+                <h2>McDonald's Coolsingel</h2>
+                <h3>€€</h3>
+            </div>
+
+        </div>
+        <img src="../CLE3-Team-1/images/placeholder.png" alt="testplaatje restaurant">
+    </div>
+    <div class="resultPanel">
+        <div class="resultDetails">
+
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Gelijkvloers</p>
+                <img src="../CLE3-Team-1/images/rating/medium.png" alt="rood oranje of groen">
+                <p>Lift aanwezig</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Parkeren</p>
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Openbaar vervoer</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/bad.png" alt="rood oranje of groen">
+                <p>Automatische deuren</p>
+                <img src="../CLE3-Team-1/images/rating/medium.png" alt="rood oranje of groen">
+                <p>Toegankelijkheid toilet</p>
+            </div>
+            <div class="textLine">
+                <img src="../CLE3-Team-1/images/rating/good.png" alt="rood oranje of groen">
+                <p>Brede gangen</p>
+                <img src="../CLE3-Team-1/images/rating/bad.png" alt="rood oranje of groen">
+                <p>Invalide toilet</p>
+            </div>
+            <div class="titleLine">
+                <h2>McDonald's Coolsingel</h2>
+                <h3>€€</h3>
+            </div>
+
+        </div>
+        <img src="../CLE3-Team-1/images/placeholder.png" alt="testplaatje restaurant">
+    </div>
+</div>
+
+
+
 <dialog id="search_results_dialog">
 
     <section id="search_results">
@@ -31,6 +123,12 @@
 <!--Temporary way to show and hide search results for testing-->
 <button id="show_search_results">Show results</button>
 <button id="hide_search_results">Hide results</button>
+
+
+<dialog class="modal" id="filter-modal">
+    <div class="modal-content"></div>
+    <button class="modal-close">❌</button>
+</dialog>
 
 </body>
 </html>
