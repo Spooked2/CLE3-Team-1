@@ -192,6 +192,8 @@ h3 {
     font-size: 2rem;
 }
 
+
+
 .whiteNav {
     position: fixed;
     background-color: #FFFFFF;
@@ -250,4 +252,10 @@ h3 {
     background-color: rgb(43, 123, 73);
     color: white;
     text-transform: capitalize;
+}
+
+#searchButton   {
+    background-color: #FFFFFF;
+    color: #2B2B2B;
+    border: #2B2B2B 5px solid;
 }
