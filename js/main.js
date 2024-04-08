@@ -21,21 +21,31 @@ let filters = {
   distance_ov: false,
 };
 
+let modal = document.getElementById("accModal");
+let btn = document.getElementById("accModalBtn");
+let span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 function init() {
   getData(apiUrl, fetchAllHandler);
 
   //Get the dialog for the search results
   searchResultsDialog = document.getElementById("search_results_dialog");
-  //Add a temporary way to open the dialog
-  let testSearchDialog = document.getElementById("show_search_results");
-  testSearchDialog.addEventListener("click", () => {
-    searchResultsDialog.show();
-  });
-  //Add a temporary way to close the dialog
-  let hideSearchDialog = document.getElementById("hide_search_results");
-  hideSearchDialog.addEventListener("click", () => {
-    searchResultsDialog.close();
-  });
 
   //Get the container to put the search results in
   searchResultsContainer = document.getElementById("search_results");
@@ -81,7 +91,7 @@ function fetchAllHandler(restaurants) {
   //Loop through all the restaurants and create articles for search results modal
   for (const restaurant of restaurants) {
     //Store the restaurant info in variable, so we don't need to fetch the information again
-    allRestaurantsInfo = restaurant;
+    allRestaurantsInfo.push(restaurant);
 
     //Create the article element
     let article = document.createElement("article");
@@ -101,9 +111,6 @@ function fetchAllHandler(restaurants) {
     //Create a paragraph for the location
     let location = document.createElement("p");
 
-    //Create an image element for the pricing
-    let pricing = document.createElement("img");
-
     //Create an Anchor for the website link
     let website = document.createElement("a");
 
@@ -122,7 +129,6 @@ function fetchAllHandler(restaurants) {
     //Fill the info div with correct elements
     infoDiv.appendChild(name);
     infoDiv.appendChild(location);
-    infoDiv.appendChild(pricing);
     infoDiv.appendChild(website);
 
     //Fill the rating div with correct elements
@@ -130,9 +136,9 @@ function fetchAllHandler(restaurants) {
     ratingDiv.appendChild(ratingText);
 
     //Fill main article with correct elements
-    article.appendChild(imageDiv);
     article.appendChild(infoDiv);
     article.appendChild(ratingDiv);
+    article.appendChild(imageDiv);
 
     //Get general accessibility rating for restaurant
     let rating = getGeneralRating(restaurant);
@@ -141,7 +147,6 @@ function fetchAllHandler(restaurants) {
     // image.src = `images/${restaurant.id}.png`;
     image.src = `images/placeholder.png`;
     ratingImage.src = `images/rating/${rating.general}.png`;
-    pricing.src = `images/pricing/${restaurant.pricing}.png`;
 
     //Fill created elements with the restaurant info
     name.innerText = restaurant.name;
@@ -149,6 +154,14 @@ function fetchAllHandler(restaurants) {
     website.href = restaurant.website;
     website.innerText = restaurant.website;
     ratingText.innerText = rating.general;
+
+    //the classes for styling
+    name.classList.add("title");
+    website.classList.add("link");
+    article.classList.add("card");
+    ratingDiv.classList.add("rate");
+    infoDiv.classList.add("info");
+    name.classList.add("title");
 
     //Add dataset to article
     article.dataset.name = restaurant.name;
@@ -283,7 +296,9 @@ function resultClickHandler(e) {
 
   //Create a big detail article if one doesn't exist already
   if (!restaurantBigDetails[id]) {
-    createBigDetailArticle(allRestaurantsInfo[id]);
+    createBigDetailArticle(
+      allRestaurantsInfo.find((restaurant) => restaurant.id === id)
+    );
   }
 
   //Replace the innerHTML of the big detail article with the correct article
